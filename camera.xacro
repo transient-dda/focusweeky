@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+
+    # 名为usb_camera的宏，输入参数为摄像头的名称
+    <xacro:macro name="usb_camera" params="prefix:=camera">
+        <link name="${prefix}_link">
+            <inertial>
+                <mass value="0.1" />
+                <origin xyz="0 0 0" />
+                <inetia ixx="0.01" ixy="0.0" ixz="0.0"
+                        iyy="0.01" iyz="0.0"
+                        izz="0.01" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.01 0.04 0.04" />
+                </geometry>
+                <material name="black" />
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.01 0.04 0.04" />
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+</robot>
+

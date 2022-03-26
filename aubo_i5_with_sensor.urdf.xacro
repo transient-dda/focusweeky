@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot name="aubo_i5" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find aubo_description)/urdf/aubo_i5.urdf.xacro" />
+    <xacro:include filename="$(find aubo_description)/urdf/camera.xacro" />
+
+    <xacro:property name="camera_offset_x" value="0.1" />
+    <xacro:property name="camera_offset_y" value="0" />
+    <xacro:property name="camera_offset_z" value="0.02" />
+
+    
+    <aubo_i5_body/>
+
+    <!-- Camera -->
+    <joint name="camera_joint" type="fixed">
+        <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="0 0 0" />
+        <parent link="wrist3_Link"/>
+        <child link="camera_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="camera"/>
+
+</robot>
+
